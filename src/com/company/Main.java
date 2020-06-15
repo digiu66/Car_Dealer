@@ -9,7 +9,7 @@ public class Main {
         ArrayList<Car> garage = Car.fillCarBase();
         System.out.println(garage);
 
-        System.out.println(garage.get(3));
+        System.out.println(garage.get(2));
 
     }
 }

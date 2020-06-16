@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
-
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,16 +38,6 @@ public class Car {
             this.edition = editionBase[2];
             this.value = randomPricePremium;
         }
-    }
-
-    public static ArrayList<Car> fillCarBase() {
-        ArrayList<Car> carbase = new ArrayList<>();
-        carbase.add(new Car());
-        carbase.add(new Car());
-        carbase.add(new Car());
-        carbase.add(new Car());
-        carbase.add(new Car());
-        return carbase;
     }
 
 

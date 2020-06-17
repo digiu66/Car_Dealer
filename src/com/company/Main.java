@@ -106,9 +106,13 @@ public class Main {
                     }
                     break;
                  case 4:
-                     you.cash = you.cash - 5000.0;
-                     garage.rerollCars();
-                     System.out.println("New offers appeared, check available cars.");
+                     if(you.cash < 5000.0) {
+                         System.out.println("You cannot afford checking new offers.");
+                     } else {
+                         you.cash = you.cash - 5000.0;
+                         garage.rerollCars();
+                         System.out.println("New offers appeared, check available cars.");
+                     }
                      break;
                 case 5:
                     if(you.ownedCars.size() == 0) {

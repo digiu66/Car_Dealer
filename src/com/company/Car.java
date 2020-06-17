@@ -16,7 +16,9 @@ public class Car {
     double randomPriceBudget = ThreadLocalRandom.current().nextInt(3000, 15000 + 1);
     double randomPriceStandard = ThreadLocalRandom.current().nextInt(15001, 50000 + 1);
     double randomPricePremium = ThreadLocalRandom.current().nextInt(50001, 150000);
-
+    public String[] status = new String[]{"Mint condition", "Broken brakes", "Alternator failure", "Overheating", "Blown fuse"};
+    public String carCondition;
+    public boolean isInspected;
 
     public static String getRandom(String[] array) {
         int rnd = new Random().nextInt(array.length);
@@ -28,6 +30,8 @@ public class Car {
         this.brand = getRandom(brandBase);
         this.color = getRandom(colorBase);
         this.mileage = randomMileage;
+        this.carCondition = getRandom(status);
+        this.isInspected = false;
         if(this.brand == "Honda" || this.brand == "Polonez" || this.brand == "Daewoo") {
             this.edition = editionBase[0];
             this.value = randomPriceBudget;

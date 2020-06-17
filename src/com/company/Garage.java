@@ -18,4 +18,14 @@ public class Garage {
     public void setCars() {
         this.fillCarBase();
     }
+
+    public ArrayList<Car> rerollCars() {
+        cars.clear();
+        cars.add(new Car());
+        cars.add(new Car());
+        cars.add(new Car());
+        cars.add(new Car());
+        cars.add(new Car());
+        return cars;
+    }
 }

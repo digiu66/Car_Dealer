@@ -39,6 +39,7 @@ public class Dealership {
             this.ownedCars.get(number).isInspected = true;
         } else {
             System.out.println("This car is suffering from: " + this.ownedCars.get(number).carCondition);
+            this.ownedCars.get(number).value = this.ownedCars.get(number).value - 0.1*this.ownedCars.get(number).value;
             System.out.println("You will have to get it fixed to get profit.");
             this.ownedCars.get(number).isInspected = true;
         }

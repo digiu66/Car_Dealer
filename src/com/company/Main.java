@@ -12,7 +12,7 @@ public class Main {
         System.out.println("1. Browse cars to buy.");
         System.out.println("2. Check stats.");
         System.out.println("3. Inspect your cars.");
-        System.out.println("4. Reroll offers (5000$).");
+        System.out.println("4. Reroll offers (3000$).");
         System.out.println("5. Sell cars.");
         System.out.println("6. Repair cars.");
 
@@ -35,7 +35,8 @@ public class Main {
 
         Garage garage = new Garage();
         garage.setCars();
-
+        Client client = new Client();
+        client.setClients();
 
         int choice = menu();
         while (choice != 0) {
@@ -107,10 +108,10 @@ public class Main {
                     }
                     break;
                 case 4:
-                    if (you.cash < 5000.0) {
+                    if (you.cash < 3000.0) {
                         System.out.println("You cannot afford checking new offers.");
                     } else {
-                        you.cash = you.cash - 5000.0;
+                        you.cash = you.cash - 3000.0;
                         garage.rerollCars();
                         System.out.println("New offers appeared, check available cars.");
                     }
@@ -119,30 +120,88 @@ public class Main {
                     if (you.ownedCars.size() == 0) {
                         System.out.println("You currently have no cars.");
                     } else {
-                        System.out.println("Choose a car to sell (1-5): ");
-                        System.out.println(you.ownedCars);
-                        int sellNumber = input.nextInt();
-                        switch (sellNumber) {
+                        System.out.println("These are clients who are currently looking to buy a car.");
+                        System.out.println("Pick one:");
+                        System.out.println(client.clients);
+                        int clients = input.nextInt();
+                        switch (clients) {
                             case 1:
-                                you.sellCar(0);
+                                System.out.println("Choose a car to sell (1-5): ");
+                                System.out.println(you.ownedCars);
+                                int sellNumber1 = input.nextInt();
+                                switch (sellNumber1) {
+                                    case 1:
+                                        you.sellCar(0, client.clients.get(0));
+                                        break;
+                                    case 2:
+                                        you.sellCar(1, client.clients.get(0));
+                                        break;
+                                    case 3:
+                                        you.sellCar(2, client.clients.get(0));
+                                        break;
+                                    case 4:
+                                        you.sellCar(3, client.clients.get(0));
+                                        break;
+                                    case 5:
+                                        you.sellCar(4, client.clients.get(0));
+                                        break;
+                                    default:
+                                        System.out.println("Choose a car in range (1-5).");
+                                        break;
+                                }
                                 break;
                             case 2:
-                                you.sellCar(1);
+                                System.out.println("Choose a car to sell (1-5): ");
+                                System.out.println(you.ownedCars);
+                                int sellNumber2 = input.nextInt();
+                                switch (sellNumber2) {
+                                    case 1:
+                                        you.sellCar(0, client.clients.get(1));
+                                        break;
+                                    case 2:
+                                        you.sellCar(1, client.clients.get(1));
+                                        break;
+                                    case 3:
+                                        you.sellCar(2, client.clients.get(1));
+                                        break;
+                                    case 4:
+                                        you.sellCar(3, client.clients.get(1));
+                                        break;
+                                    case 5:
+                                        you.sellCar(4, client.clients.get(1));
+                                        break;
+                                    default:
+                                        System.out.println("Choose a car in range (1-5).");
+                                        break;
+                                }
                                 break;
                             case 3:
-                                you.sellCar(2);
-                                break;
-                            case 4:
-                                you.sellCar(3);
-                                break;
-                            case 5:
-                                you.sellCar(4);
-                                break;
-                            default:
-                                System.out.println("Choose a car in range (1-5).");
-                                break;
-                        }
-                    }
+                                System.out.println("Choose a car to sell (1-5): ");
+                                System.out.println(you.ownedCars);
+                                int sellNumber3 = input.nextInt();
+                                switch (sellNumber3) {
+                                    case 1:
+                                        you.sellCar(0, client.clients.get(2));
+                                        break;
+                                    case 2:
+                                        you.sellCar(1, client.clients.get(2));
+                                        break;
+                                    case 3:
+                                        you.sellCar(2, client.clients.get(2));
+                                        break;
+                                    case 4:
+                                        you.sellCar(3, client.clients.get(2));
+                                        break;
+                                    case 5:
+                                        you.sellCar(4, client.clients.get(2));
+                                        break;
+                                    default:
+                                        System.out.println("Choose a car in range (1-5).");
+                                        break;
+                                }
+                        } break;
+                    } default:
+                    System.out.println("Choose a client in range.");
                     break;
                 case 6:
                     if (you.ownedCars.size() == 0) {

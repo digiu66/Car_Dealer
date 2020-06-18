@@ -16,21 +16,28 @@ public class Dealership {
             garage.cars.remove(number);
             garage.cars.add(number, new Car());
             System.out.println("You bought a car. Your current stock:\n" + this.ownedCars);
-            System.out.println("Your current cash: " + this.cash);
         } else {
             System.out.println("The car you chose is too expensive. Try another one.");
-            System.out.println("Your current cash: " + this.cash);
+        }
+        System.out.println("Your current cash: " + this.cash);
+    }
+
+    public void sellCar(int number, Client client) {
+        if (client.money >= this.ownedCars.get(number).value) {
+            if (client.likedBrand1 == this.ownedCars.get(number).brand || client.likedBrand2 == this.ownedCars.get(number).brand) {
+                double tax = 0.02 * this.ownedCars.get(number).value;
+                this.cash = this.cash + this.ownedCars.get(number).value - tax;
+                System.out.println("You successfully sold a car and earned " + this.ownedCars.get(number).value + " American USD Dollars. You also paid the tax of " + tax + ".");
+                this.ownedCars.remove(number);
+            } else {
+                System.out.println("This client is looking for a different car.");
+            }
+        } else {
+            System.out.println("This client cannot afford your car.");
         }
     }
-
-    public void sellCar(int number) {
-        this.cash = this.cash + this.ownedCars.get(number).value;
-        System.out.println("You successfully sold a car and earned " + this.ownedCars.get(number).value + " American USD Dollars.");
-        this.ownedCars.remove(number);
-    }
-
     public void inspectCar(int number) {
-        if(this.ownedCars.get(number).isInspected == true) {
+        if(this.ownedCars.get(number).isInspected) {
             System.out.println("This car was already inspected. Status: \n" + this.ownedCars.get(number).carCondition);
         }
          else if(this.ownedCars.get(number).carCondition == "Mint condition") {
@@ -45,8 +52,8 @@ public class Dealership {
         }
     }
 
-     public void setOwnedCars(){
-            this.ownedCars = new ArrayList<Car>();
+     public void setOwnedCars() {
+        this.ownedCars = new ArrayList<>();
         }
     }
 

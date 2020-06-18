@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public class Garage {
 
-    ArrayList<Car> cars = new ArrayList<>(5);
+    ArrayList<Car> cars = new ArrayList<>();
 
     public ArrayList<Car> fillCarBase() {
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
+        for(int i = 0; i < 5; i++) {
+            cars.add(new Car());
+        }
         return cars;
     }
 
@@ -21,11 +19,9 @@ public class Garage {
 
     public ArrayList<Car> rerollCars() {
         cars.clear();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
+        for(int i = 0; i < 5; i++) {
+            cars.add(new Car());
+        }
         return cars;
     }
 }

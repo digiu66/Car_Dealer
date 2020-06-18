@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Client {
 
-    String[] nameBase = new String[]{"Johnny", "Jacek", "Martin", "Diablo", "Tim", "Wojciech", "Darek", "Slavek", "Randall", "Bobby", "Grzesiek", "Sylvester", "Mati"};
+    String[] nameBase = new String[]{"Johnny", "Jacek", "Martin", "Diablo", "Tim", "Wojciech", "Darek", "Slavek", "Randall", "Bobby", "Grzesiek", "Sylvester", "Mati", "Przemek", "Piotrek", "Maciek", "Janek"};
     String name;
     String[] likedBrandBase = new String[]{"Honda", "FSO", "Daewoo", "Opel", "BMW", "Ford", "Toyota", "Audi", "Tesla", "Mercedes", "Chrysler", "Porsche"};
     String likedBrand1;
@@ -32,13 +32,21 @@ public class Client {
     }
 
     public ArrayList<Client> fillClientBase() {
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 5; i++) {
             clients.add(new Client());
         }
         return clients;
     }
     public void setClients() {
         this.fillClientBase();
+    }
+
+    public ArrayList<Client> rerollClients() {
+        clients.clear();
+        for(int i = 0; i < 5; i++) {
+            clients.add(new Client());
+        }
+        return clients;
     }
     public String toString() {
         return "\nName: " + name + ", Likes: " + likedBrand1 + ", " + likedBrand2 + ", Budget: " + money;

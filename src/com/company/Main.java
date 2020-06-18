@@ -12,9 +12,10 @@ public class Main {
         System.out.println("1. Browse cars to buy.");
         System.out.println("2. Check stats.");
         System.out.println("3. Inspect your cars.");
-        System.out.println("4. Reroll offers (3000$).");
+        System.out.println("4. Find new offers (3000$).");
         System.out.println("5. Sell cars.");
         System.out.println("6. Repair cars.");
+        System.out.println("7. Advertise yourself to find new clients (1500$).");
 
         Scanner inputChoice = new Scanner(System.in);
         int w = inputChoice.nextInt();
@@ -76,6 +77,7 @@ public class Main {
                 case 2:
                     System.out.println("Your current cash: " + you.cash);
                     System.out.println("Your cars: " + you.ownedCars);
+                    System.out.println("Total cars sold: " + you.transactionCounter);
                     break;
                 case 3:
                     if (you.ownedCars.size() == 0) {
@@ -121,7 +123,8 @@ public class Main {
                         System.out.println("You currently have no cars.");
                     } else {
                         System.out.println("These are clients who are currently looking to buy a car.");
-                        System.out.println("Pick one:");
+                        System.out.println("Your currently owned cars: " + you.ownedCars);
+                        System.out.println("Pick one client:");
                         System.out.println(client.clients);
                         int clients = input.nextInt();
                         switch (clients) {
@@ -199,18 +202,70 @@ public class Main {
                                         System.out.println("Choose a car in range (1-5).");
                                         break;
                                 }
-                        } break;
-                    } default:
-                    System.out.println("Choose a client in range.");
+                            case 4:
+                                System.out.println("Choose a car to sell (1-5): ");
+                                System.out.println(you.ownedCars);
+                                int sellNumber4 = input.nextInt();
+                                switch (sellNumber4) {
+                                    case 1:
+                                        you.sellCar(0, client.clients.get(3));
+                                        break;
+                                    case 2:
+                                        you.sellCar(1, client.clients.get(3));
+                                        break;
+                                    case 3:
+                                        you.sellCar(2, client.clients.get(3));
+                                        break;
+                                    case 4:
+                                        you.sellCar(3, client.clients.get(3));
+                                        break;
+                                    case 5:
+                                        you.sellCar(4, client.clients.get(3));
+                                        break;
+                                    default:
+                                        System.out.println("Choose a car in range (1-5).");
+                                        break;
+                                }
+                                break;
+                            case 5:
+                                System.out.println("Choose a car to sell (1-5): ");
+                                System.out.println(you.ownedCars);
+                                int sellNumber5 = input.nextInt();
+                                switch (sellNumber5) {
+                                    case 1:
+                                        you.sellCar(0, client.clients.get(4));
+                                        break;
+                                    case 2:
+                                        you.sellCar(1, client.clients.get(4));
+                                        break;
+                                    case 3:
+                                        you.sellCar(2, client.clients.get(4));
+                                        break;
+                                    case 4:
+                                        you.sellCar(3, client.clients.get(4));
+                                        break;
+                                    case 5:
+                                        you.sellCar(4, client.clients.get(4));
+                                        break;
+                                    default:
+                                        System.out.println("Choose a car in range (1-5).");
+                                        break;
+                                }
+                                break;
+                            default:
+                                System.out.println("Choose a client in range.");
+                                break;
+                        }
+                    }
                     break;
                 case 6:
                     if (you.ownedCars.size() == 0) {
                         System.out.println("You currently have no cars.");
                     } else {
                         System.out.println("Choose the mechanic:");
-                        System.out.println("1. Jurij - base price: 1500$, takes additional money depending on the condition, has a low chance of breaking your car even more.");
-                        System.out.println("2. Andrzej - base price: 5000$, takes additional money depending on the condition, adds 10% more to your car's value.");
-                        System.out.println("3. Johnson - best in town, base price: 8000$, takes additional money depending on the condition, adds 18% more to your car's value.");
+                        System.out.println("1. Jurij - base price: 1100$, takes additional money depending on the condition, has a low chance of breaking your car even more.");
+                        System.out.println("2. Andrzej - base price: 3500$, takes additional money depending on the condition, adds 10% more to your car's value.");
+                        System.out.println("3. Johnson - best in town, base price: 6000$, takes additional money depending on the condition, adds 18% more to your car's value.");
                         int mechanic = input.nextInt();
                         switch (mechanic) {
                             case 1:
@@ -291,10 +346,23 @@ public class Main {
                                 break;
                             default:
                                 System.out.println("Choose a mechanic in range. (1-3)");
+                                break;
                         }
-
                     }
+                    break;
+                case 7:
+                    if(you.cash >= 1500.0) {
+                        client.rerollClients();
+                        you.cash = you.cash - 1500.0;
+                        System.out.println("Your advertising paid off! New clients available.");
+                    } else {
+                        System.out.println("You cannot afford advertising.");
+                    }
+                    break;
+                default:
+                    System.out.println("Choose a correct action.");
             }
+
             System.out.println("\nPress enter to continue...");
             System.in.read();
             choice = menu();

@@ -51,7 +51,7 @@ public class Car {
     public void cheapRepairs(Dealership you) {
         if (this.isInspected) {
             int fate = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-            double basePrice = 1500.0;
+            double basePrice = 1100.0;
             if (fate < 10) {
                 this.value = this.value - 0.2 * this.value;
                 System.out.println("Oh no! The mechanic only made it worse! You lost 20% of your car's worth.");
@@ -95,7 +95,7 @@ public class Car {
 
     public void standardRepairs(Dealership you) {
         if (this.isInspected) {
-            double basePrice = 5000.0;
+            double basePrice = 3500.0;
             if (this.carCondition == "Mint condition") {
                 System.out.println("This car is already in mint condition! No repairs needed.");
             } else {
@@ -135,7 +135,7 @@ public class Car {
 
     public void deluxeRepairs(Dealership you) {
         if (this.isInspected) {
-            double basePrice = 8000.0;
+            double basePrice = 6000.0;
             if (this.carCondition == "Mint condition") {
                 System.out.println("This car is already in mint condition! No repairs needed.");
             } else {

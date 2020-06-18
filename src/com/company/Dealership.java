@@ -7,6 +7,7 @@ public class Dealership {
 
     public ArrayList<Car> ownedCars;
     public Double cash = 25000.0;
+    public Integer transactionCounter = 0;
 
 
     public void buyCar(Garage garage, int number) {
@@ -29,6 +30,7 @@ public class Dealership {
                 this.cash = this.cash + this.ownedCars.get(number).value - tax;
                 System.out.println("You successfully sold a car and earned " + this.ownedCars.get(number).value + " American USD Dollars. You also paid the tax of " + tax + ".");
                 this.ownedCars.remove(number);
+                transactionCounter++;
             } else {
                 System.out.println("This client is looking for a different car.");
             }

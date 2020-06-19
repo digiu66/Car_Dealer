@@ -14,8 +14,8 @@ public class Car {
     public String[] editionBase = new String[]{"budget", "standard", "premium"};
     int randomMileage = ThreadLocalRandom.current().nextInt(5000, 100000 + 1);
     double randomPriceBudget = ThreadLocalRandom.current().nextInt(3000, 15000 + 1);
-    double randomPriceStandard = ThreadLocalRandom.current().nextInt(15001, 50000 + 1);
-    double randomPricePremium = ThreadLocalRandom.current().nextInt(50001, 150000);
+    double randomPriceStandard = ThreadLocalRandom.current().nextInt(15001, 35000 + 1);
+    double randomPricePremium = ThreadLocalRandom.current().nextInt(35001, 70000 + 1);
     public String[] status = new String[]{"Mint condition", "Broken brakes", "Alternator failure", "Overheating", "Blown fuse"};
     public String carCondition;
     public boolean isInspected;
@@ -62,27 +62,35 @@ public class Car {
                     if (carCondition == "Broken brakes" && you.cash >= (basePrice + brakesMultiplier * this.value)) {
                         System.out.println("Jurij successfully repaired your car!");
                         you.cash = you.cash - (basePrice + brakesMultiplier * this.value);
+                        you.totalRepairCost = you.totalRepairCost + (basePrice + brakesMultiplier * this.value);
                         System.out.println("You paid: " + (basePrice + brakesMultiplier * this.value));
                         this.carCondition = "Mint condition";
                         this.value = this.value + 0.25 * this.value;
+                        you.repairCounter++;
                     } else if (carCondition == "Blown fuse" && you.cash >= (basePrice + fuseMultiplier * this.value)) {
                         System.out.println("Jurij successfully repaired your car!");
                         you.cash = you.cash - (basePrice + fuseMultiplier * this.value);
+                        you.totalRepairCost = you.totalRepairCost + (basePrice + fuseMultiplier * this.value);
                         System.out.println("You paid: " + (basePrice + fuseMultiplier * this.value));
                         this.carCondition = "Mint condition";
                         this.value = this.value + 0.25 * this.value;
+                        you.repairCounter++;
                     } else if (carCondition == "Overheating" && you.cash >= (basePrice + overheatMultiplier * this.value)) {
                         System.out.println("Jurij successfully repaired your car!");
                         you.cash = you.cash - (basePrice + overheatMultiplier * this.value);
+                        you.totalRepairCost = you.totalRepairCost + (basePrice + overheatMultiplier * this.value);
                         System.out.println("You paid: " + (basePrice + (overheatMultiplier * this.value)));
                         this.carCondition = "Mint condition";
                         this.value = this.value + 0.25 * this.value;
+                        you.repairCounter++;
                     } else if (carCondition == "Alternator failure" && you.cash >= (basePrice + alternatorMultiplier * this.value)) {
                         System.out.println("Jurij successfully repaired your car!");
                         you.cash = you.cash - (basePrice + alternatorMultiplier * this.value);
+                        you.totalRepairCost = you.totalRepairCost + (basePrice + alternatorMultiplier * this.value);
                         System.out.println("You paid: " + (basePrice + alternatorMultiplier * this.value));
                         this.carCondition = "Mint condition";
                         this.value = this.value + 0.25 * this.value;
+                        you.repairCounter++;
                     } else {
                         System.out.println("You cannot afford repairing this car.");
                     }
@@ -102,27 +110,36 @@ public class Car {
                 if (carCondition == "Broken brakes" && you.cash >= (basePrice + brakesMultiplier * this.value)) {
                     System.out.println("Andrzej successfully repaired your car!");
                     you.cash = you.cash - (basePrice + brakesMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + brakesMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + brakesMultiplier * this.value));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.35 * this.value;
+                    you.repairCounter++;
                 } else if (carCondition == "Blown fuse" && you.cash >= (basePrice + fuseMultiplier * this.value)) {
                     System.out.println("Andrzej successfully repaired your car!");
                     you.cash = you.cash - (basePrice + fuseMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + fuseMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + fuseMultiplier * this.value));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.35 * this.value;
+                    you.repairCounter++;
+
                 } else if (carCondition == "Overheating" && you.cash >= (basePrice + overheatMultiplier * this.value)) {
                     System.out.println("Andrzej successfully repaired your car!");
                     you.cash = you.cash - (basePrice + overheatMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + overheatMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + (overheatMultiplier * this.value)));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.35 * this.value;
+                    you.repairCounter++;
                 } else if (carCondition == "Alternator failure" && you.cash >= (basePrice + alternatorMultiplier * this.value)) {
                     System.out.println("Andrzej successfully repaired your car!");
                     you.cash = you.cash - (basePrice + alternatorMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + alternatorMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + alternatorMultiplier * this.value));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.35 * this.value;
+                    you.repairCounter++;
                 } else {
                     System.out.println("You cannot afford to repair this car.");
                 }
@@ -142,27 +159,35 @@ public class Car {
                 if (carCondition == "Broken brakes" && you.cash >= (basePrice + brakesMultiplier * this.value)) {
                     System.out.println("Johnson successfully repaired your car!");
                     you.cash = you.cash - (basePrice + brakesMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + brakesMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + brakesMultiplier * this.value));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.43 * this.value;
+                    you.repairCounter++;
                 } else if (carCondition == "Blown fuse" && you.cash >= (basePrice + fuseMultiplier * this.value)) {
                     System.out.println("Johnson successfully repaired your car!");
                     you.cash = you.cash - (basePrice + fuseMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + fuseMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + fuseMultiplier * this.value));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.43 * this.value;
+                    you.repairCounter++;
                 } else if (carCondition == "Overheating" && you.cash >= (basePrice + overheatMultiplier * this.value)) {
                     System.out.println("Johnson successfully repaired your car!");
                     you.cash = you.cash - (basePrice + overheatMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + overheatMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + (overheatMultiplier * this.value)));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.43 * this.value;
+                    you.repairCounter++;
                 } else if (carCondition == "Alternator failure" && you.cash >= (basePrice + alternatorMultiplier * this.value)) {
                     System.out.println("Johnson successfully repaired your car!");
                     you.cash = you.cash - (basePrice + alternatorMultiplier * this.value);
+                    you.totalRepairCost = you.totalRepairCost + (basePrice + alternatorMultiplier * this.value);
                     System.out.println("You paid: " + (basePrice + alternatorMultiplier * this.value));
                     this.carCondition = "Mint condition";
                     this.value = this.value + 0.43 * this.value;
+                    you.repairCounter++;
                 } else {
                     System.out.println("You cannot afford to repair this car.");
                 }

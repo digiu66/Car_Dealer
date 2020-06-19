@@ -11,7 +11,7 @@ public class Client {
     String[] likedBrandBase = new String[]{"Honda", "FSO", "Daewoo", "Opel", "BMW", "Ford", "Toyota", "Audi", "Tesla", "Mercedes", "Chrysler", "Porsche"};
     String likedBrand1;
     String likedBrand2;
-    double randomMoneyBudget = ThreadLocalRandom.current().nextInt(3000, 150000 + 1);
+    double randomMoneyBudget = ThreadLocalRandom.current().nextInt(3000, 100000 + 1);
     Double money;
 
     ArrayList<Client> clients = new ArrayList<>();
@@ -25,7 +25,7 @@ public class Client {
         this.name = getRandom(nameBase);
         this.likedBrand1 = getRandom(likedBrandBase);
         this.likedBrand2 = getRandom(likedBrandBase);
-        while(likedBrand1 == likedBrand2) {
+        while(likedBrand1.equals(likedBrand2)) {
             this.likedBrand2 = getRandom(likedBrandBase);
         }
         this.money = randomMoneyBudget;

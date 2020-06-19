@@ -8,6 +8,10 @@ public class Dealership {
     public ArrayList<Car> ownedCars;
     public Double cash = 25000.0;
     public Integer transactionCounter = 0;
+    public Integer repairCounter = 0;
+    public Integer adCounter = 0;
+    public Integer moves = transactionCounter + repairCounter + adCounter;
+    public Double totalRepairCost = 0.0;
 
 
     public void buyCar(Garage garage, int number) {
@@ -46,8 +50,8 @@ public class Dealership {
                 this.ownedCars.get(number).value = this.ownedCars.get(number).value + 0.25 * this.ownedCars.get(number).value;
                 this.ownedCars.get(number).isInspected = true;
             } else {
-                System.out.println("This car is suffering from: " + this.ownedCars.get(number).carCondition + " Value dropped by 10%.");
-                this.ownedCars.get(number).value = this.ownedCars.get(number).value - 0.1 * this.ownedCars.get(number).value;
+                System.out.println("This car is suffering from: " + this.ownedCars.get(number).carCondition + " - value dropped by 5%.");
+                this.ownedCars.get(number).value = this.ownedCars.get(number).value - 0.05 * this.ownedCars.get(number).value;
                 System.out.println("You will have to get it fixed to get profit.");
                 this.ownedCars.get(number).isInspected = true;
             }

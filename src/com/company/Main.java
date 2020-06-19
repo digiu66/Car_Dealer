@@ -18,9 +18,8 @@ public class Main {
         System.out.println("7. Advertise yourself to find new clients (1500$).");
 
         Scanner inputChoice = new Scanner(System.in);
-        int w = inputChoice.nextInt();
 
-        return w;
+        return inputChoice.nextInt();
     }
 
 
@@ -84,8 +83,11 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Your current cash: " + you.cash);
-                    System.out.println("Your cars: " + you.ownedCars);
+                    System.out.println("Your currently owned cars: " + you.ownedCars);
+                    System.out.println("Total cars repaired: " + you.repairCounter);
+                    System.out.println("Total repair cost: " + you.totalRepairCost);
                     System.out.println("Total cars sold: " + you.transactionCounter);
+                    System.out.println("Total ads bought: " + you.adCounter);
                     break;
                 case 3:
                     if (you.ownedCars.size() == 0) {
@@ -363,6 +365,7 @@ public class Main {
                     if (you.cash >= 1500.0) {
                         client.rerollClients();
                         you.cash = you.cash - 1500.0;
+                        you.adCounter++;
                         System.out.println("Your advertising paid off! New clients available.");
                     } else {
                         System.out.println("You cannot afford advertising.");
@@ -373,7 +376,8 @@ public class Main {
             }
 
             if (you.cash >= 75000.0) {
-                System.out.println("Congratulations! You tripled your money and became the ultimate Car Dealer. Good game!");
+                System.out.println("Congratulations! You tripled your money and became the ultimate Car Dealer." + "\nTotal moves: " + you.moves);
+                System.out.println("Good game!");
                 System.out.println("\nPress enter to continue...");
                 System.in.read();
                 System.exit(0);

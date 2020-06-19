@@ -31,22 +31,20 @@ public class Client {
         this.money = randomMoneyBudget;
     }
 
-    public ArrayList<Client> fillClientBase() {
+    public void fillClientBase() {
         for(int i = 0; i < 5; i++) {
             clients.add(new Client());
         }
-        return clients;
     }
     public void setClients() {
         this.fillClientBase();
     }
 
-    public ArrayList<Client> rerollClients() {
+    public void rerollClients() {
         clients.clear();
         for(int i = 0; i < 5; i++) {
             clients.add(new Client());
         }
-        return clients;
     }
     public String toString() {
         return "\nName: " + name + ", Likes: " + likedBrand1 + ", " + likedBrand2 + ", Budget: " + money;

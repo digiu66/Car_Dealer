@@ -39,21 +39,19 @@ public class Dealership {
         }
     }
     public void inspectCar(int number) {
-        if(this.ownedCars.get(number).isInspected) {
-            System.out.println("This car was already inspected. Status: \n" + this.ownedCars.get(number).carCondition);
+            if (this.ownedCars.get(number).isInspected) {
+                System.out.println("This car was already inspected. Status: \n" + this.ownedCars.get(number).carCondition);
+            } else if (this.ownedCars.get(number).carCondition == "Mint condition") {
+                System.out.println("This car is in mint condition! Car value + 25%.");
+                this.ownedCars.get(number).value = this.ownedCars.get(number).value + 0.25 * this.ownedCars.get(number).value;
+                this.ownedCars.get(number).isInspected = true;
+            } else {
+                System.out.println("This car is suffering from: " + this.ownedCars.get(number).carCondition + " Value dropped by 10%.");
+                this.ownedCars.get(number).value = this.ownedCars.get(number).value - 0.1 * this.ownedCars.get(number).value;
+                System.out.println("You will have to get it fixed to get profit.");
+                this.ownedCars.get(number).isInspected = true;
+            }
         }
-         else if(this.ownedCars.get(number).carCondition == "Mint condition") {
-            System.out.println("This car is in mint condition! Car value + 25%.");
-            this.ownedCars.get(number).value = this.ownedCars.get(number).value + 0.25*this.ownedCars.get(number).value;
-            this.ownedCars.get(number).isInspected = true;
-        } else {
-            System.out.println("This car is suffering from: " + this.ownedCars.get(number).carCondition);
-            this.ownedCars.get(number).value = this.ownedCars.get(number).value - 0.1*this.ownedCars.get(number).value;
-            System.out.println("You will have to get it fixed to get profit.");
-            this.ownedCars.get(number).isInspected = true;
-        }
-    }
-
      public void setOwnedCars() {
         this.ownedCars = new ArrayList<>();
         }

@@ -6,22 +6,20 @@ public class Garage {
 
     ArrayList<Car> cars = new ArrayList<>();
 
-    public ArrayList<Car> fillCarBase() {
+    public void fillCarBase() {
         for(int i = 0; i < 5; i++) {
             cars.add(new Car());
         }
-        return cars;
     }
 
     public void setCars() {
         this.fillCarBase();
     }
 
-    public ArrayList<Car> rerollCars() {
+    public void rerollCars() {
         cars.clear();
         for(int i = 0; i < 5; i++) {
             cars.add(new Car());
         }
-        return cars;
     }
 }

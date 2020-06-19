@@ -12,7 +12,7 @@ public class Main {
         System.out.println("1. Browse cars to buy.");
         System.out.println("2. Check stats.");
         System.out.println("3. Inspect your cars.");
-        System.out.println("4. Find new offers (3000$).");
+        System.out.println("4. Find new car offers (3000$).");
         System.out.println("5. Sell cars.");
         System.out.println("6. Repair cars.");
         System.out.println("7. Advertise yourself to find new clients (1500$).");
@@ -31,13 +31,21 @@ public class Main {
         String name = input.nextLine();
         Dealership you = new Dealership();
         you.setOwnedCars();
-        System.out.println("Hello " + name + "!" + "\n" + "Welcome to Car Dealer Sim." + "\n" + "You have " + you.cash + " American USD Dollars to start with.");
+        System.out.println("Hello " + name + "!" + "\n" + "Welcome to Car Dealer Sim." );
+        System.out.println("How to play: ");
+        System.out.println("* You have " + you.cash + " American USD Dollars to start with. You need to buy your first car. *");
+        System.out.println("* After your purchase you need to inspect the car to see if it's all good to sell or needs repairs - you can choose a mechanic to repair your car. *");
+        System.out.println("* If it's in mint condition you can sell it. Beware: not all clients want your car and not all of them have the money. *");
+        System.out.println("* If you're stuck with a car nobody wants or can't afford any new cars, you can advertise yourself or check for new offers - not for free, of course. *");
+        System.out.println("* Your goal is to triple your money. If you have no cars and cannot afford anything - you lose. *");
+        System.out.println("*** Good luck, have fun! ***");
 
 
         Garage garage = new Garage();
         garage.setCars();
         Client client = new Client();
         client.setClients();
+
 
         int choice = menu();
         while (choice != 0) {
@@ -202,6 +210,7 @@ public class Main {
                                         System.out.println("Choose a car in range (1-5).");
                                         break;
                                 }
+                                break;
                             case 4:
                                 System.out.println("Choose a car to sell (1-5): ");
                                 System.out.println(you.ownedCars);
@@ -351,7 +360,7 @@ public class Main {
                     }
                     break;
                 case 7:
-                    if(you.cash >= 1500.0) {
+                    if (you.cash >= 1500.0) {
                         client.rerollClients();
                         you.cash = you.cash - 1500.0;
                         System.out.println("Your advertising paid off! New clients available.");
@@ -363,10 +372,21 @@ public class Main {
                     System.out.println("Choose a correct action.");
             }
 
-            System.out.println("\nPress enter to continue...");
-            System.in.read();
-            choice = menu();
+            if (you.cash >= 75000.0) {
+                System.out.println("Congratulations! You tripled your money and became the ultimate Car Dealer. Good game!");
+                System.out.println("\nPress enter to continue...");
+                System.in.read();
+                System.exit(0);
+            } else if (you.cash <= 1500.0 && you.ownedCars.size() == 0) {
+                System.out.println("You have no cars to sell and cannot afford anything. It's over, buy yourself a drink with the leftovers of your money.");
+                System.out.println("\nPress enter to end your dreams...");
+                System.in.read();
+                System.exit(0);
+            } else {
+                System.out.println("\nPress enter to continue...");
+                System.in.read();
+                choice = menu();
+            }
         }
     }
 }
-
